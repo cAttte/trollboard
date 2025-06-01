@@ -1,0 +1,50 @@
+/daemon/target
+
+# Gradle
+.gradle/
+build/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Local config
+/local.properties
+
+# IDE files
+.idea/
+*.iml
+*.iws
+
+# Auto-generated icons and cache
+.cxx/
+.externalNativeBuild/
+captures/
+outputs/
+.navigation/
+*.apk
+*.ap_
+
+# Log/Crash/Profiling
+*.log
+*.hprof
+
+.idea/
+
+# Kotlin specific
+*.kotlin_module
+
+# Jetpack Compose compiler artifacts
+compose.compiler/
+
+# NDK / JNI build cache
+.obj/
+*.so
+
+# Packaging
+*.zip
+*.tar
+*.tar.gz
+*.aar
+
+# Firebase / Crashlytics
+fabric.properties
+crashlytics.properties
