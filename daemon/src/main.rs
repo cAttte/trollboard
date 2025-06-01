@@ -1,8 +1,7 @@
 use action::Action;
 use futures_util::StreamExt;
 use mdns_sd::{ServiceDaemon, ServiceEvent};
-use rand::seq::IteratorRandom;
-use std::{net::IpAddr, time::Duration};
+use std::time::Duration;
 use tokio_tungstenite::{
     connect_async,
     tungstenite::{
@@ -35,11 +34,12 @@ fn mdns_loop() -> String {
         if let Ok(ServiceEvent::ServiceResolved(info)) =
             receiver.recv_timeout(Duration::from_secs(10))
         {
-            if let Some(ip) = info.get_addresses().iter().choose(&mut rand::rng()) {
-                return match ip {
-                    IpAddr::V4(v4) => format!("ws://{}:{}", v4, info.get_port()),
-                    IpAddr::V6(v6) => format!("ws://[{}]:{}", v6, info.get_port()),
-                };
+            if let Some(ip) = info.get_addresses_v4().iter().next() {
+                return format!("ws://{}:{}", ip, info.get_port());
+                // return match ip {
+                //     IpAddr::V4(v4) => format!("ws://{}:{}", v4, info.get_port()),
+                //     IpAddr::V6(v6) => format!("ws://[{}]:{}", v6, info.get_port()),
+                // };
             }
         }
     }

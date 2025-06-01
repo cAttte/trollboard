@@ -817,7 +817,6 @@ dependencies = [
  "futures-util",
  "macros",
  "mdns-sd",
- "rand",
  "serde",
  "serde_json",
  "tokio",
