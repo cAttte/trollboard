@@ -1,4 +1,3 @@
-use super::Button;
 use macros::button;
 use windows::Win32::Foundation::{POINT, RECT};
 use windows::Win32::Media::Audio::{PlaySoundW, SND_ALIAS, SND_ASYNC, SND_SYSTEM};

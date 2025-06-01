@@ -1,4 +1,3 @@
-use super::Button;
 use macros::button;
 use windows::Win32::UI::Input::KeyboardAndMouse::*;
 

@@ -1,4 +1,3 @@
-use super::Button;
 use macros::button;
 use windows::Win32::Graphics::Gdi::{
     CDS_RESET, CDS_UPDATEREGISTRY, ChangeDisplaySettingsExA, DEVMODEA, DISP_CHANGE_SUCCESSFUL,

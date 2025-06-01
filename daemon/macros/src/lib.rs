@@ -18,6 +18,8 @@ pub fn button(attr: TokenStream, item: TokenStream) -> TokenStream {
     let button_const = quote::format_ident!("BUTTON");
 
     let output = quote! {
+        use crate::buttons::Button;
+
         pub const #button_const: Button = Button {
             name: #fn_name_str,
             desc: #description,
