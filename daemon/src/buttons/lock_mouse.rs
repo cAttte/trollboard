@@ -1,15 +1,10 @@
 use super::Button;
+use macros::button;
 use windows::Win32::Foundation::{POINT, RECT};
 use windows::Win32::UI::WindowsAndMessaging::{ClipCursor, GetCursorPos};
 
-pub const BUTTON: Button = Button {
-    name: "lock_mouse",
-    desc: "Lock mouse cursor",
-    icon: include_str!("../../icons/mouselock.svg"),
-    run: run,
-};
-
-fn run(is_press: bool) -> Result<(), &'static str> {
+#[button(desc = "Lock mouse cursor")]
+fn lock_mouse(is_press: bool) -> Result<(), &'static str> {
     if is_press {
         let mut pos = POINT::default();
         unsafe {

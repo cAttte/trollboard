@@ -1,4 +1,5 @@
 use super::Button;
+use macros::button;
 use windows::Win32::Graphics::Gdi::{
     CDS_RESET, CDS_UPDATEREGISTRY, ChangeDisplaySettingsExA, DEVMODEA, DISP_CHANGE_SUCCESSFUL,
     DM_DISPLAYORIENTATION, DMDO_90, DMDO_180, DMDO_270, DMDO_DEFAULT, ENUM_CURRENT_SETTINGS,
@@ -6,14 +7,8 @@ use windows::Win32::Graphics::Gdi::{
 };
 use windows::core::PCSTR;
 
-pub const BUTTON: Button = Button {
-    name: "flip_screen",
-    desc: "Flip screen orientation",
-    icon: include_str!("../../icons/flipscreen.svg"),
-    run: run,
-};
-
-fn run(_: bool) -> Result<(), &'static str> {
+#[button(desc = "Flip screen orientation")]
+fn flip_screen(_: bool) -> Result<(), &'static str> {
     unsafe {
         let mut devmode = DEVMODEA::default();
         devmode.dmSize = std::mem::size_of::<DEVMODEA>() as u16;

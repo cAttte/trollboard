@@ -85,6 +85,7 @@ async fn ws_loop(uri: String) {
                 }
             }
             Err(_) => {
+                println!("dying");
                 break;
             }
             _ => {}
