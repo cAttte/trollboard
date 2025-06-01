@@ -12,4 +12,4 @@ serde = { version = "1.0.219", features = ["derive"] }
 serde_json = "1.0.140"
 tokio = { version = "1.45.1", features = ["macros", "rt-multi-thread"] }
 tokio-tungstenite = { version = "0.26.2", features = ["rustls", "tokio-native-tls"] }
-windows = { version = "0.61.1", features = ["Win32_UI_Input_KeyboardAndMouse", "Win32_UI_WindowsAndMessaging", "Win32_Foundation", "Win32_Graphics_Gdi"] }
+windows = { version = "0.61.1", features = ["Win32_UI_Input_KeyboardAndMouse", "Win32_UI_WindowsAndMessaging", "Win32_Foundation", "Win32_Graphics_Gdi", "Win32_Media_Audio"] }

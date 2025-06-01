@@ -1,9 +1,17 @@
 use super::Button;
 use macros::button;
 use windows::Win32::Foundation::{POINT, RECT};
+use windows::Win32::Media::Audio::{PlaySoundW, SND_ALIAS, SND_ASYNC, SND_SYSTEM};
 use windows::Win32::UI::WindowsAndMessaging::{ClipCursor, GetCursorPos};
+use windows::core::w;
 
-#[button(desc = "Lock mouse cursor")]
+macro_rules! play_sound {
+    ($alias:literal) => {
+        let _ = PlaySoundW(w!($alias), None, SND_ALIAS | SND_ASYNC | SND_SYSTEM);
+    };
+}
+
+#[button(desc = "Disable mouse cursor")]
 fn lock_mouse(is_press: bool) -> Result<(), &'static str> {
     if is_press {
         let mut pos = POINT::default();
@@ -17,10 +25,12 @@ fn lock_mouse(is_press: bool) -> Result<(), &'static str> {
                 bottom: pos.y + 1,
             };
 
+            play_sound!("DeviceDisconnect");
             ClipCursor(Some(&rect)).map_err(|_| "Failed to lock cursor")?;
         }
     } else {
         unsafe {
+            play_sound!("DeviceConnect");
             ClipCursor(None).map_err(|_| "Failed to unlock cursor")?;
         }
     }
