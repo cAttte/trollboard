@@ -2,11 +2,14 @@ package dev.catte.trollboard.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import dev.catte.trollboard.R
 
-// Set of Material typography styles to start with
+val ComicSans = FontFamily(Font(R.font.comic_sans))
+
 val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = FontFamily.Default,

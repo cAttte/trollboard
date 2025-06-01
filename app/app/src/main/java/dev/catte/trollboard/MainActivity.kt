@@ -7,10 +7,13 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -28,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import dev.catte.trollboard.service.NsdService
 import dev.catte.trollboard.service.WsServer
 import dev.catte.trollboard.ui.component.SvgImage
+import dev.catte.trollboard.ui.theme.ComicSans
 import dev.catte.trollboard.ui.theme.TrollboardTheme
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -86,9 +90,14 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun Screen() {
-        Column() {
+        Column(
+            Modifier
+                .padding(WindowInsets.safeDrawing.asPaddingValues())
+                .padding(top = 20.dp)
+        ) {
             Text(
                 "trollboard",
+                fontFamily = ComicSans,
                 style = MaterialTheme.typography.headlineLarge,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
