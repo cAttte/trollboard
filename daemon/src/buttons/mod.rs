@@ -1,8 +1,9 @@
-use std::collections::HashMap;
 use serde::Serialize;
+use std::collections::HashMap;
 
 mod flip_screen;
 mod lock_mouse;
+mod run_narrator;
 mod swap_mouse;
 mod win_key;
 
@@ -13,7 +14,6 @@ pub struct Button {
     pub icon: &'static str,
     #[serde(skip)]
     pub run: fn(is_press: bool) -> Result<(), &'static str>,
-
 }
 
 inventory::collect!(Button);

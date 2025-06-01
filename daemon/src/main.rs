@@ -13,6 +13,7 @@ use tokio_tungstenite::{
 
 mod action;
 mod buttons;
+mod macros;
 
 static SECURE_TROLLWORD: &str = "my trollword";
 

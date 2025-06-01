@@ -7,9 +7,12 @@ edition = "2024"
 futures-util = "0.3.31"
 inventory = "0.3.20"
 macros = { version = "0.1.0", path = "macros" }
+maplit = "1.0.2"
 mdns-sd = "0.13.9"
+once_cell = "1.21.3"
+registry = "1.3.0"
 serde = { version = "1.0.219", features = ["derive"] }
 serde_json = "1.0.140"
 tokio = { version = "1.45.1", features = ["macros", "rt-multi-thread"] }
 tokio-tungstenite = { version = "0.26.2", features = ["rustls", "tokio-native-tls"] }
-windows = { version = "0.61.1", features = ["Win32_UI_Input_KeyboardAndMouse", "Win32_UI_WindowsAndMessaging", "Win32_Foundation", "Win32_Graphics_Gdi", "Win32_Media_Audio"] }
+windows = { version = "0.61.1", features = ["Win32_UI_Input_KeyboardAndMouse", "Win32_UI_WindowsAndMessaging", "Win32_Foundation", "Win32_Graphics_Gdi", "Win32_Media_Audio", "Win32_System", "Win32_System_Registry", "Win32_Security", "Win32_UI_Shell"] }
