@@ -15,12 +15,10 @@ pub fn button(attr: TokenStream, item: TokenStream) -> TokenStream {
         _ => panic!("Expected a string literal as the button description."),
     };
 
-    let button_const = quote::format_ident!("BUTTON");
-
     let output = quote! {
         use crate::buttons::Button;
 
-        pub const #button_const: Button = Button {
+        pub const BUTTON: Button = Button {
             name: #fn_name_str,
             desc: #description,
             icon: include_str!(concat!("../../icons/", #fn_name_str, ".svg")),
@@ -28,6 +26,8 @@ pub fn button(attr: TokenStream, item: TokenStream) -> TokenStream {
         };
 
         #input_fn
+
+        inventory::submit! { BUTTON }
     };
 
     output.into()

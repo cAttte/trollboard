@@ -1,7 +1,5 @@
 use serde::Deserialize;
 
-use crate::buttons;
-
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct Action {
@@ -11,7 +9,8 @@ pub struct Action {
 
 impl Action {
     pub fn run(self) {
-        let button = buttons::ALL.iter().find(|b| b.name == self.button);
+        let map = crate::buttons::map();
+        let button = map.get(self.button.as_str());
         if let Some(button) = button {
             // TODO: handle and communicate errors
             let _ = (button.run)(self.is_press);

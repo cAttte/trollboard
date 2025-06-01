@@ -49,7 +49,7 @@ async fn ws_loop(uri: String) {
     let mut request = uri.clone().into_client_request().unwrap();
     request.headers_mut().insert(
         "X-Trollbuttons",
-        serde_json::to_string(&buttons::ALL)
+        serde_json::to_string(&buttons::vec())
             .unwrap()
             .parse()
             .unwrap(),
